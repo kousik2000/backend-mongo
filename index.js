@@ -84,4 +84,4 @@ app.delete('/deleteblog/:id',async(req,res)=>{
 
   
 
-app.listen(3000,() => console.log('server running'));
+app.listen(9000,() => console.log('server running'));
