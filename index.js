@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const Portfolio = require('./model');
 const Blog = require('./blog');
 
-const port =9000;
-
 const app = express();
 
 app.use(express.json());
@@ -86,4 +84,4 @@ app.delete('/deleteblog/:id',async(req,res)=>{
 
   
 
-app.listen(port,() => console.log('server running'));
+app.listen(3000,() => console.log('server running'));
