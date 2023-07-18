@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Portfolio = require('./model');
+const cors = require('cors');
 const Blog = require('./blog');
 
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
 
