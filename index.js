@@ -8,7 +8,7 @@ const InsightSchema = require('./assignment');
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000/'
+    origin: 'https://portfolio-frontend-rose-seven.vercel.app'
 }));
 
 app.use(express.json());
