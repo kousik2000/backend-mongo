@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Portfolio = require('./model');
 const Blog = require('./blog');
+const InsightSchema = require('./assignment');
 
 const app = express();
 
 app.use(cors({
-    origin: 'https://portfolio-frontend-rose-seven.vercel.app'
+    origin: 'http://localhost:3000/'
 }));
 
 app.use(express.json());
@@ -82,5 +83,63 @@ app.delete('/deleteblog/:id', async (req, res) => {
         console.log(err.message);
     }
 });
+
+//something
+
+app.post('/assignment', async (req, res) => {
+    const { impact,
+        intensity,
+        sector,
+        topic,
+        insight,
+        url,
+        region,
+        start_year,
+        end_year,   
+        added,
+        published,
+        country,
+        relevance,
+        pestle,
+        source,
+        title,
+        likelihood } = req.body;
+    try {
+        const newData = new InsightSchema({ impact,
+            intensity,
+            sector,
+            topic,
+            insight,
+            url,
+            region,
+            start_year,
+            end_year,   
+            added,
+            published,
+            country,
+            relevance,
+            pestle,
+            source,
+            title,
+            likelihood });
+        await newData.save();
+        return res.json(await InsightSchema.find());
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
+
+app.get('/getassignment', async (req, res) => {
+    try {
+        const allData = await InsightSchema.find();
+        return res.json(allData);
+    } catch (err) {
+        console.error("Error fetching data:", err);
+        return res.status(500).json({ error: "An error occurred while fetching data." });
+    }
+});
+
+
 
 app.listen(9000, () => console.log('Server running on port 9000'));
